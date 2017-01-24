@@ -50,6 +50,26 @@ Month.data.frame <- c(CSM$Month)
 
 CSM_data.frame <- data.frame(OS, tatol.views, Month.data.frame)
 
-##PC5. Merge your two datasets together into a new dataset with columns for each month, total views (across the top 5000 pages) and total mobile views. Are there are missing data? Can you tell why?
-##PC6. Create a new column in your merged dataset that describes your best estimate of the proportion (or percentage, if you really must!) of views that comes from mobile. Be able to talk about the assumptions you've made here. Make sure that date, in this final column, is a date or datetime object in R.
-##PC6. Graph this over time and be ready to describe: (a) your best estimate of the proportion of views from mobiles to the Seattle City website over time and (b) an indication of whether it's going up or down.
+##PC5. Merge your two datasets together into a new dataset 
+##with columns for each month, total views (across the top 5000 pages) 
+##and total mobile views. 
+
+Merged <- merge(TP,CSM_data.frame)
+table(is.na(Merged))
+
+##Are there are missing data? Can you tell why?
+
+
+##PC6. Create a new column in your merged dataset 
+##that describes your best estimate of the proportion (or percentage, if you really must!) 
+##of views that comes from mobile. 
+##Be able to talk about the assumptions you've made here. 
+##Make sure that date, in this final column, is a date or datetime object in R.
+
+##PC7. Graph this over time and be ready to describe: 
+##(a) your best estimate of the proportion of views from mobiles
+to the Seattle City website over time and 
+##(b) an indication of whether it's going up or down.
+
+
+
