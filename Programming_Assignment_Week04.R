@@ -56,6 +56,7 @@ CSM_data.frame <- data.frame(OS, tatol.views, Month.data.frame)
 
 Merged <- merge(TP,CSM_data.frame)
 table(is.na(Merged))
+##complete.cases(colmn)
 
 ##Are there are missing data? Can you tell why?
 
