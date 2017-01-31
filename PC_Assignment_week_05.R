@@ -1,7 +1,7 @@
 ##PC1. Go back to the dataset I distributed for the week 3 problem set. 
 ##You've already computed the mean for this in week 2. 
 
-read.csv("~/Desktop/COM521/COM521-Janny/week3_dataset-janny.csv")
+WEEK2 <- read.csv("~/Desktop/COM521/COM521-Janny/week3_dataset-janny.csv")
 
 ##You should compute the 95% confidence interval for the variable x in two ways:
 
@@ -41,7 +41,7 @@ right
 ##(c) Compare the mean from your sample - and your confidence interval 
 ## -to the true population mean. Is the true mean inside your confidence interval?
 
-  ##Yes, the mean of x is inside the range of 95% confidence interval.
+  ##No, the true mean is not inside the range of 95% confidence interval.
  
 ##PC2. Let's look beyond the mean. Compare the distribution from your sample of x 
 ##to the true population. Draw histograms and compute other descriptive and summary statistics. 
@@ -49,16 +49,22 @@ right
  
  DFP <- read.delim("~/Desktop/COM521/COM521-Janny/com521_population.tsv")
  ##why it become a splited data frame automatically when I assign it a new name when I read the dataset?
- mean(DFP$x)
+## we always have to save the return value of the read.xxxx function.
+mean(DFP$x)
+mean(WEEK2$x)
 hist(DFP$x)
+hist(WEEK2$x)
 summary(DFP$x)
 t.test(DFP$x)
+
+##population distribution is more normal,but population also has further outliners. 
 
 ##PC3. Compute the mean of y from the true population 
 ##and then create the mean and confidence interval from the y in your sample.
 ##Is it in or out? It's in. 
 t.test(DFP$y)
 mean(DFP$y)
+mean(WEEK2$y)
 
 ##PC4. I want you to run a simple simulation that demonstrates one of 
 ##the most fundamental insights of statistics:
