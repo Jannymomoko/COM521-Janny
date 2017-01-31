@@ -71,8 +71,12 @@ mean(WEEK2$y)
 ##(a) Create a vector of 10,000 randomly generated numbers 
 ##that are uniformly distributed between 0 and 9.
 
-SAMPLE <- sample(0:9, 10000, replace=T)  ##I don't understand the replace=T part tho.
+SAMPLE <- sample(0:9, 10000, replace=T)  
+##I don't understand the replace=T part tho."replace=T" means replacement is allowed. 
+##runif() takes samples with decimal places, while sample() function only take integal numbers. 
 SAMPLE
+
+replicate(100,{mean(sample(DFP,2))})
 
 ##(b) Take the mean of that vector. Draw a histogram.
 mean(SAMPLE)
@@ -85,7 +89,12 @@ mean.of.two <- function(i) {
   sample.of.two <- sample(SAMPLE, 2)
   mean(sample.of.two)
 }
- ##I dont understand why we put "i" in the function tho. 
+
+##lapply always return a list. 
+##sapply() will give you a vector if it can, if it cant, just give you a list.
+##I dont understand why we put "i" in the function tho. 
+##You just save the return into it, whatever you name it.  
+
 sapply(rep(1,100), mean.of.two)
 
 ##Create a new vector that contains those means. 
@@ -115,10 +124,13 @@ mean.of.100 <- function(i) {
 vector100 <- sapply(rep(1,100), mean.of.100)
 hist(vector100)
 
-
+##Central Limit Theorem (The larger N is, the range of sample mean is narrower) 
 
 ##changes:1) the range of the mean is changed.The larger the N is, the smaller the range is.
-          2)  
+          
+##varience is like noise. You need to listen to long time to get the information.  
+##The variance is also getting smaller with the larger case numbers, 
+##becasue the sampling distribution become to happen in smaller range.
 
 ##PC5. Do PC4 again but with random data drawn from a normal distribution 
 ##instead of a uniform distribution. 
@@ -127,6 +139,7 @@ mean.of.new <- function(i) {
   sample.of.new <- sample(NS, 10)
   mean(sample.of.new)
 }
+
 APPLE <- sapply(rep(1,100),mean.of.new)
 hist(APPLE)
 ##How are you results different than in PC4?
