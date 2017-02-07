@@ -14,6 +14,14 @@ owan03$X4 <- 4
 group <- c(owan03$X1,owan03$X2,owan03$X3,owan03$X4)
 new.df <- data.frame(group,lifespan)
 
+##Mako's way:
+colnames(awan03) <- c("control", "low", "medium", "high")
+
+library(reshape)
+d <- melt(d, na.rm = TRUE)
+
+colnames(d) <- 
+
 ##Red Dye Number 40
 ##S.W. Laagakos and F. Mosteller of Harvard University fed mice different doses of red dye number 40 and recorded the time of death in weeks. Results for female mice, dosage and time of death are shown in the data
 ##X1 = time of death for control group
@@ -42,7 +50,9 @@ ggplot(new.df, aes(group, lifespan)) + geom_point(aes(color = group))
 ##(b) the degree to which the assumptions for t-tests and ANOVA hold. 
 
 ##What is the global mean of your dependent variable?
-LS <- as.numeric(new.df$lifespan)
+mean(new.df$lifespan, na.rm = TRUE)
+
+
 
 
 
