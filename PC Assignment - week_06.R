@@ -5,13 +5,13 @@
 
 ##I think a good format would be a data frame with two columns: 
 ##group, time of death (i.e., lifespan).
-df <- as.data.frame(c(owan03$X1,owan03$X2,owan03$X3,owan03$X4))
+
+lifespan <- c(owan03$X1,owan03$X2,owan03$X3,owan03$X4)
 owan03$X1 <- 1
 owan03$X2 <- 2
 owan03$X3 <- 3
 owan03$X4 <- 4
 group <- c(owan03$X1,owan03$X2,owan03$X3,owan03$X4)
-
 new.df <- data.frame(group,lifespan)
 
 ##Red Dye Number 40
@@ -26,6 +26,12 @@ new.df <- data.frame(group,lifespan)
 summary(group)
 summary(lifespan)
 hist(lifespan)
+mean(owan03$X1)
+hist(owan03$X1)
+summary(owan03$X2)
+hist(owan03$X2)
+summary(owan03$X3)
+hist(owan03$X4)
 
 ##Write code that allows you to generate a useful way to both
 ##(a) get a visual sense both for the shape of the data and its relationships and 
