@@ -1,7 +1,8 @@
 ##PC1. Load the data into R. Now get to work on reshaping the dataset. 
 
 ## this isn't working - read.table("~/desktop/COM521/COM521-Janny/owan03.xls", header = TRUE)
-
+getwd()
+read.csv("~desktop~/desktop/COM521/COM521-Janny/owan03.csv)
 
 ##I think a good format would be a data frame with two columns: 
 ##group, time of death (i.e., lifespan).
@@ -15,12 +16,12 @@ group <- c(owan03$X1,owan03$X2,owan03$X3,owan03$X4)
 new.df <- data.frame(group,lifespan)
 
 ##Mako's way:
-colnames(awan03) <- c("control", "low", "medium", "high")
+
+colnames(owan03) <- c("control","low","medium","high")
 
 library(reshape)
 d <- melt(d, na.rm = TRUE)
-
-colnames(d) <- 
+colnames(d) <- c("group", "death.time")
 
 ##Red Dye Number 40
 ##S.W. Laagakos and F. Mosteller of Harvard University fed mice different doses of red dye number 40 and recorded the time of death in weeks. Results for female mice, dosage and time of death are shown in the data
@@ -47,20 +48,28 @@ hist(owan03$X4)
 library(ggplot2)
 ggplot(new.df, aes(group, lifespan)) + geom_point(aes(color = group))
 
+##Mako's way:
+
+ggplot(data=d) + aes(x=death.time, fill=group) + geom_bar() + stat_bin(binwidth=10)
+ggplot(data=d) + aes(x=death.time, fill=group) + geom_bar() + stat_bin(binwidth=10) + facet_grid(group ~.)
+
 ##(b) the degree to which the assumptions for t-tests and ANOVA hold. 
 
 ##What is the global mean of your dependent variable?
+
 mean(new.df$lifespan, na.rm = TRUE)
-
-
-
 
 
 ##PC3. Do a t-test between mice with any RD40 and mice with at least a small amount. 
 ##Run a t-test between the group with a high dosage and control group. 
-t.test(owan03$X1,owan03$X2)
+
+t.test(owan03$control,owan03$high, na.rm = TRUE)
 
 ##How would you go about doing it using formula notation? 
+
+owan03$control <- owan03$group == "control"
+t.test(death.time ~ control, data=d)
+
 ##Be ready to report, interpret, and discuss the results in substantive terms.
 ##PC4. Estimate an ANOVA analysis using aov() to see if there is a difference 
 ##between the groups. 
