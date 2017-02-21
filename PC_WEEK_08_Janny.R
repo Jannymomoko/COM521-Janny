@@ -11,6 +11,7 @@ t.test(DF$x,DF$y)
 
 ##PC2. Estimate how correlated x and y are with each other.
 cor(DF$x,DF$y)
+cor(DF$x,DF$y, method = "spearman")
 
 ##PC3. Recode your data in the way that I laid out in Week 3 PC7.
 DF$i <- as.logical(DF$i)
@@ -25,14 +26,16 @@ DF$k.factor <- factor(DF$k,
 ##(a) 
 cor(DF$x,DF$y)
 
-plot(lm(x~y, data=DF))
+plot(lm(y~x, data=DF))
 
 ##(b) 
-summary(lm(x~y + i + j, data= DF))
+summary(lm(y~x + i + j, data= DF))
 
 ##(c) 
-summary(lm(x~y + i + j + k, data= DF))
-M <- lm(x~y + i + j + k, data= DF)
+summary(lm(y~x + i + j + k, data= DF))
+
+M <- lm(y~x + i + j + k, data= DF)
+
 ##PC5. Generate a set of residual plots for the final model (c) 
 ##and be ready to interpret your model in terms of each of these:
 qqnorm(residuals(M))
